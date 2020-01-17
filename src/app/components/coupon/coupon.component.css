@@ -1,0 +1,26 @@
+#coupons .coupon{
+    border-radius: 4px;
+    border: 1px solid;
+    border-color: #ccc;
+    border-left-width: 15px;
+    border-left-color: #00a025;
+}
+
+#coupons .no-coupons {
+    font-size: 24px;
+
+}
+
+#coupons .no-coupons p{
+    cursor: pointer;
+}
+
+#coupons .no-coupons a{
+    text-decoration: none;
+    color: #000;
+}
+
+#coupons .icon-calendar{
+    text-align: center;
+    font-size: 200px;
+}

@@ -1,0 +1,72 @@
+<div class="row" id="coupons" *ngIf="load">
+  <div class="col-12">
+
+    <ng-container *ngIf="coupons.length === 0">
+      <div class="row">
+        <div class="col-12 text-center p-5 no-coupons">
+          <p><a [routerLink]="['/events']"> Actualmente, no existen cupones para este curso, estate pendiente de los
+              eventos.</a></p>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 icon-calendar no-coupons">
+          <a [routerLink]="['/events']">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="coupons.length > 0">
+
+      <div class="row">
+        <div class="col-12">
+          <img class="w-100" [src]="course.img" alt="">
+        </div>
+      </div>
+
+      <div class="row mt-4">
+        <div class="col-12 text-center">
+          <h1>Cupones</h1>
+        </div>
+      </div>
+
+      <div class="row no-gutters coupon mb-4 mt-4 p-2 " *ngFor="let coupon of coupons">
+
+        <div class="col-md-4 col-12 mt-2">
+          <span>Precio del cupón: {{coupon.price}} €</span>
+        </div>
+
+        <div class="col-md-6 col-12 mt-md-0 mt-2">
+          <span class="d-block"><b>Desde:</b> {{coupon.dateStart | date:'dd/MM/yyyy HH:mm'}}</span>
+          <span class="d-block"><b>Hasta</b> {{coupon.dateEnd | date:'dd/MM/yyyy HH:mm'}}</span>
+        </div>
+
+        <div class="col-md-2 col-12 mt-md-0 mt-2">
+          <a [href]="coupon.url" target="_blank"><button class="btn h-100 btn-block btn-primary"> Ir al
+              cupón</button></a>
+        </div>
+
+      </div>
+
+      <ng-container *ngIf="course.description">
+        <div class="row">
+          <div class="col-12">
+            <h2>Descripción del curso</h2>
+          </div>
+        </div>
+
+        <div class="row mt-4">
+          <div class="col-12 text-justify" [innerHTML]="course.description | sanitize">
+
+          </div>
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+  </div>
+</div>

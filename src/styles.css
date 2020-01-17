@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body {
+    height: 100%;
+}
+
+html body {
+    background: #f5f5f5;
+    overflow-x: hidden;
+}
+
+html body .ui-calendar {
+    display: block;
+}
