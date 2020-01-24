@@ -24,6 +24,8 @@
     "bootstrap": "^4.3.1",
     "chart.js": "^2.9.3",
     "ddr-block-list": "^8.0.1",
+    "ddr-spinner": "^8.0.1",
+    "ddr-toast": "0.0.1",
     "firebase": "^6.6.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",

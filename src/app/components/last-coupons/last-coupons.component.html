@@ -1,36 +1,57 @@
-<div id="last-coupons">
-  <!-- <ddr-block-list
-  [blockItems]="blockItems"
-  labelNoResults="No hay cupones que mostrar"
-  previousLabel="Previo"
-  nextLabel="Siguiente"
-  pagination="5"
-  (actionSelected)="getAction($event)"
-  (itemSelected)="selectItem($event)">
+<div class="row" id="last-coupons">
 
-  <ng-template #templateInfoAdditional let-item="item">
-    <span>{{item.date | date: 'dd/MMM/yyyy'}}</span>
-  </ng-template>
+  <div class="col-12 text-center">
+    <h1>Últimos cupones</h1>
+  </div>
 
-  <ng-template #templateHeader let-item="item">
-    <span>{{item.client}}<</span>
-  </ng-template>
+  <div class="col-12">
+    Futuro filtro
+  </div>
 
-  <ng-template #templateData let-item="item">
+  <div class="col-12">
 
-    <ddr-block-data-item
-      label="Estado"
-      [value]="item.status">
-    </ddr-block-data-item>
-    <ddr-block-data-item
-      label="Edad"
-      [value]="item.age">
-    </ddr-block-data-item>
+    <ddr-block-list *ngIf="loadCoupons"
+      [blockItems]="coupons"
+      labelNoResults="No hay cupones que mostrar"
+      previousLabel="Previo"
+      nextLabel="Siguiente"
+      pagination="5"
+      (itemSelected)="selectItem($event)">
 
-  </ng-template>
+      <ng-template #templateInfoAdditional let-item="item">
+        <span>{{item.code}}</span>
+      </ng-template>
 
-</ddr-block-list> -->
+      <ng-template #templateHeader let-item="item">
+        <span>{{item.course_name}}</span>
+      </ng-template>
+
+      <ng-template #templateData let-item="item">
+
+        <ddr-block-data-item
+          label="Precio"
+          [value]="item.price">
+        </ddr-block-data-item>
+        <ddr-block-data-item
+          label="Inicio"
+          [value]="(item.start | date: 'dd/MM/yyyy')">
+        </ddr-block-data-item>
+        <ddr-block-data-item
+          label="Fin"
+          [value]="(item.end | date: 'dd/MM/yyyy')">
+        </ddr-block-data-item>
+        <ddr-block-data-item
+          label="Autor"
+          [value]="item.author">
+        </ddr-block-data-item>
+
+      </ng-template>
+
+    </ddr-block-list>
+  </div>
+
+
 </div>
 
-
+<ddr-spinner></ddr-spinner>
 

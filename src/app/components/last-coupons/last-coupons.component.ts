@@ -1,5 +1,9 @@
+import { Router } from '@angular/router';
+import { DdrBlockItem } from 'ddr-block-list';
+import { Coupon } from './../../models/coupon.model.ts';
 import { CouponService } from './../../services/coupon.service';
 import { Component, OnInit } from '@angular/core';
+import { DdrSpinnerService } from 'ddr-spinner';
 
 @Component({
   selector: 'ddr-last-coupons',
@@ -8,18 +12,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LastCouponsComponent implements OnInit {
 
+  private loadCoupons: boolean;
+  private coupons: DdrBlockItem[];
+
   constructor(
-    private couponService: CouponService
-  ) { }
+    private couponService: CouponService,
+    private ddrSpinner: DdrSpinnerService
+  ) {
+    this.ddrSpinner.showSpinner();
+    this.coupons = [];
+  }
 
   ngOnInit() {
     this.couponService.getLastCoupons().subscribe(coupons => {
       console.log(coupons);
-      
+      let today = new Date();
+      coupons.forEach(coupon => {
+
+        let dateEndCoupon = new Date(coupon.end);
+        if (dateEndCoupon.getTime() >= today.getTime()) {
+          let blockItem = new DdrBlockItem();
+
+          blockItem.item = coupon;
+          blockItem.borderColor = "green"
+          this.coupons.push(blockItem);
+        }
+
+
+      });
+
+      this.loadCoupons = true;
+      this.ddrSpinner.hideSpinner();
+
     });
-  
+
   }
 
-
+  selectItem($event) {
+    window.open($event.url, "_blank"); 
+    // window.location.href = $event.url;
+  }
 
 }

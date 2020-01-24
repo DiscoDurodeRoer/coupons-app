@@ -1,3 +1,5 @@
+import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { LoginComponent } from './components/login/login.component';
 
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +15,9 @@ import { NgxPaginationModule } from 'ngx-pagination/dist/ngx-pagination';
 import { HttpClientModule } from '@angular/common/http';
 import { CalendarModule } from 'primeng/primeng';
 import { FormsModule } from '@angular/forms';
+import { DdrBlockListModule } from 'ddr-block-list';
+import { DdrSpinnerModule } from 'ddr-spinner';
+import { DdrToastModule } from 'ddr-toast';
 
 // Pipe
 import { SanitizePipe } from './pipes/sanitize.pipe';
@@ -42,7 +47,9 @@ const firebaseConfig = {
     CouponComponent,
     SanitizePipe,
     LastCouponsComponent,
-    AddCouponComponent
+    AddCouponComponent,
+    LoginComponent,
+    CreateAccountComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +62,10 @@ const firebaseConfig = {
     HttpClientModule,
     NgxPaginationModule,
     CalendarModule,
-    FormsModule
+    FormsModule,
+    DdrBlockListModule,
+    DdrSpinnerModule,
+    DdrToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

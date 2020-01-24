@@ -61,9 +61,7 @@ export class CouponService {
   }
 
   getLastCoupons(): Observable<Coupon[]> {
-    return this.afd.list<Coupon>('coupons', ref =>
-      ref.orderByChild('start').limitToFirst(5)
-    ).valueChanges();
+    return this.afd.list<Coupon>('coupons').valueChanges();
   }
 
 

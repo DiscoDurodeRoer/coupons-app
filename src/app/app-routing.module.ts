@@ -1,3 +1,5 @@
+import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { LoginComponent } from './components/login/login.component';
 import { LastCouponsComponent } from './components/last-coupons/last-coupons.component';
 import { AddCouponComponent } from './components/add-coupon/add-coupon.component';
 import { NgModule } from '@angular/core';
@@ -11,6 +13,8 @@ const routes: Routes = [
   { path: 'coupons/course/:id', component: CouponComponent },
   { path: 'add-coupon', component: AddCouponComponent },
   { path: 'last-coupons', component: LastCouponsComponent },
+  { path: 'login', component: LoginComponent }, 
+  { path: 'create-account', component: CreateAccountComponent }, 
   { path: '**', pathMatch: 'full', redirectTo: 'last-coupons' }
 ];
 

@@ -1,0 +1,44 @@
+<div class="row" id="login">
+  <div class="col-12">
+
+    <div class="row">
+      <div class="col-12">
+        <form (ngSubmit)="checkLogin()">
+
+          <!-- Email -->
+          <div class="row form-group">
+            <div class="col-12">
+              <label for="email">Email</label>
+              <input type="email" required class="form-control" id="email" name="email" [(ngModel)]="user.email">
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="row form-group">
+            <div class="col-12">
+              <label for="pass">Password</label>
+              <input type="password" required class="form-control" id="pass" name="pass" [(ngModel)]="user.password">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-12">
+              <a href="#" [routerLink]="['/create-account']"
+                routerLinkActive="router-link-active">¿No tienes cuenta? Create una.</a>
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-12">
+              <button class="btn btn-block btn-primary" type="submit">
+                Login
+              </button>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

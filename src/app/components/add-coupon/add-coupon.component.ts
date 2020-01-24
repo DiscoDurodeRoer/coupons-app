@@ -1,3 +1,4 @@
+import { DdrToastService } from 'ddr-toast';
 import { CouponService } from './../../services/coupon.service';
 import { Coupon } from 'src/app/models/coupon.model.ts';
 import { Component, OnInit } from '@angular/core';
@@ -14,11 +15,11 @@ export class AddCouponComponent implements OnInit {
   public today: Date;
 
   constructor(
-    private couponService: CouponService
+    private couponService: CouponService,
+    private toastService: DdrToastService
   ) {
     this.coupon = new Coupon();
 
-    this.today = new Date();
 
     this.coupon.dateStart = new Date();
     this.coupon.dateEnd = new Date();
@@ -42,7 +43,7 @@ export class AddCouponComponent implements OnInit {
 
     this.coupon.code = "DDR_ENERO_1_2020";
     this.couponService.addCoupon(this.coupon).then( () => {
-      console.log("cupon creado");
+      this.toastService.addSuccessMessage('Éxito', '¡Has creado un cupón!')
     }).catch(error => {
       console.error(error);
     })
