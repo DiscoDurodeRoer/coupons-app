@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Router } from '@angular/router';
 import { DdrBlockItem } from 'ddr-block-list';
 import { Coupon } from './../../models/coupon.model.ts';
@@ -12,12 +13,13 @@ import { DdrSpinnerService } from 'ddr-spinner';
 })
 export class LastCouponsComponent implements OnInit {
 
-  private loadCoupons: boolean;
   private coupons: DdrBlockItem[];
 
   constructor(
     private couponService: CouponService,
-    private ddrSpinner: DdrSpinnerService
+    private ddrSpinner: DdrSpinnerService,
+    public auth: AuthService,
+    private router: Router
   ) {
     this.ddrSpinner.showSpinner();
     this.coupons = [];
@@ -25,6 +27,7 @@ export class LastCouponsComponent implements OnInit {
 
   ngOnInit() {
     this.couponService.getLastCoupons().subscribe(coupons => {
+      this.coupons = [];
       console.log(coupons);
       let today = new Date();
       coupons.forEach(coupon => {
@@ -41,7 +44,6 @@ export class LastCouponsComponent implements OnInit {
 
       });
 
-      this.loadCoupons = true;
       this.ddrSpinner.hideSpinner();
 
     });
@@ -49,8 +51,12 @@ export class LastCouponsComponent implements OnInit {
   }
 
   selectItem($event) {
-    window.open($event.url, "_blank"); 
+    window.open($event.url, "_blank");
     // window.location.href = $event.url;
+  }
+
+  goToBack() {
+    this.router.navigate(['/manage-coupons']);
   }
 
 }

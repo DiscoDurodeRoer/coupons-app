@@ -8,10 +8,12 @@ export class Coupon {
     dateStart: Date;
     dateEnd: Date;
     code: string;
-    author: string
+    author: string;
+    user: string
 
     constructor(id?: string, price?: number, url?: string,
-        dateStart?: Date, dateEnd?: Date, code?: string, course_name?: string, author?: string) {
+        dateStart?: Date, dateEnd?: Date, code?: string, 
+        course_name?: string, author?: string, user?: string) {
         this.id = id;
         this.course_name = course_name;
         this.price = price;
@@ -20,6 +22,7 @@ export class Coupon {
         this.dateEnd = dateEnd;
         this.code = code;
         this.author = author;
+        this.user = user;
     }
 
 }

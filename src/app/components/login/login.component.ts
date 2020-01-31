@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       this.toastService.addSuccessMessage('Éxito', '¡Te has logueado!')
 
       console.log(state);
-      this.route.navigate(['/add-coupon'])
+      this.route.navigate(['/manage-coupons'])
 
     }, error => {
       this.toastService.addErrorMessage('Error', 'El usuario o la contraseña son incorrectas');

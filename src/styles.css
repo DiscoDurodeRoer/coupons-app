@@ -12,3 +12,9 @@ html body {
 html body .ui-calendar {
     display: block;
 }
+
+.button-action {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+}

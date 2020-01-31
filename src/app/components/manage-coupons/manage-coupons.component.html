@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-12">
+
+    <div class="row">
+      <div class="col-12 text-center">
+        <h1>Mis cupones</h1>
+      </div>
+
+      <div class="col-12">
+
+        <ddr-block-list 
+        [blockItems]="coupons"
+        labelNoResults="No hay cupones que mostrar"
+        previousLabel="Previo"
+        nextLabel="Siguiente"
+        pagination="5"
+        (actionSelected)="getAction($event)">
+  
+        <ng-template #templateInfoAdditional let-item="item">
+          <span>{{item.code}}</span>
+        </ng-template>
+  
+        <ng-template #templateHeader let-item="item">
+          <span>{{item.course_name}}</span>
+        </ng-template>
+  
+        <ng-template #templateData let-item="item">
+  
+          <ddr-block-data-item
+            label="Precio"
+            [value]="item.price + '€'">
+          </ddr-block-data-item>
+          <ddr-block-data-item
+            label="Inicio"
+            [value]="(item.start | date: 'dd/MM/yyyy')">
+          </ddr-block-data-item>
+          <ddr-block-data-item
+            label="Fin"
+            [value]="(item.end | date: 'dd/MM/yyyy')">
+          </ddr-block-data-item>
+          <ddr-block-data-item
+            label="Autor"
+            [value]="item.author">
+          </ddr-block-data-item>
+  
+        </ng-template>
+  
+      </ddr-block-list>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="button-action">
+  <button class="btn btn-primary" (click)="addCoupon()">Añadir cupón</button>
+</div>
+
+<ddr-spinner></ddr-spinner>

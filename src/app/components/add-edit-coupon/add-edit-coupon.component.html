@@ -3,7 +3,7 @@
 
     <div class="row">
       <div class="col-12 text-center">
-        <h1>Añadir cupón</h1>
+        <h1>{{(mode === MODE_EDIT ? 'Editar' : 'Añadir') + ' cupón'}}</h1>
       </div>
     </div>
 
@@ -15,10 +15,11 @@
 
             <div class="col-md-4 col-12">
               <label for="course">Nombre curso</label>
-              <input type="text" required class="form-control" name="course" id="course" [(ngModel)]="coupon.course_name" />
+              <input type="text" required class="form-control" name="course" id="course"
+                [(ngModel)]="coupon.course_name" />
             </div>
 
-            
+
             <div class="col-md-4 col-12">
               <label for="author">Autor</label>
               <input type="text" required class="form-control" name="author" id="author" [(ngModel)]="coupon.author" />
@@ -40,25 +41,23 @@
 
             <div class="col-md-4 col-12">
               <label for="end">Fin fecha cupón</label>
-              <p-calendar name="end" id="end" inputStyleClass="form-control" [(ngModel)]="coupon.dateEnd" showTime="true"
-                [minDate]="coupon.dateStart" [locale]="localeES">
+              <p-calendar name="end" id="end" inputStyleClass="form-control" [(ngModel)]="coupon.dateEnd"
+                showTime="true" [minDate]="coupon.dateStart" [locale]="localeES">
               </p-calendar>
+            </div>
+
+            <div class="col-md-4 col-12">
+              <label for="code">Código *</label>
+              <input required name="code" class="form-control" id="code" [(ngModel)]="coupon.code" />
             </div>
 
           </div>
 
           <div class="row form-group">
 
-            <div class="col-md-8 ol-12">
+            <div class="col-12">
               <label for="url">URL *</label>
-              <input required name="url" class="form-control" id="url"
-                [(ngModel)]="coupon.url"/>
-            </div>
-
-            <div class="col-md-4 col-12">
-              <label for="code">Código *</label>
-              <input required name="code" class="form-control" id="code"
-                [(ngModel)]="coupon.code"/>
+              <input required name="url" class="form-control" id="url" [(ngModel)]="coupon.url" />
             </div>
 
           </div>
@@ -67,8 +66,14 @@
           <div class="row form-group">
             <div class="col-12">
 
-              <button type="button" type="submit" class="btn btn-primary btn-block">Añadir cupón</button>
+              <button type="button" type="submit" class="btn btn-primary btn-block">{{(mode === MODE_EDIT ? 'Editar' : 'Añadir') + ' cupón'}}</button>
 
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-12">
+              <button type="button" [routerLink]="['/manage-coupons']" routerLinkActive="router-link-active"  class="btn btn-primary btn-block">Volver</button>
             </div>
           </div>
 

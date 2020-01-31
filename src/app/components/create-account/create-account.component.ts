@@ -30,7 +30,7 @@ export class CreateAccountComponent implements OnInit {
       this.toastService.addErrorMessage('Error', 'Las contraseñas no coinciden');
     } else {
       this.authService.createAccount(this.user.email, this.user.password).then(success => {
-        console.log(success);
+        this.toastService.addSuccessMessage('Éxito', 'Te has logueado con éxito.');
         this.router.navigate(['/login']);
       }).catch(error => {
         console.error(error);

@@ -1,5 +1,3 @@
-import { CreateAccountComponent } from './components/create-account/create-account.component';
-import { LoginComponent } from './components/login/login.component';
 
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +25,11 @@ import { AppComponent } from './app.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CouponComponent } from './components/coupon/coupon.component';
 import { LastCouponsComponent } from './components/last-coupons/last-coupons.component';
-import { AddCouponComponent } from './components/add-coupon/add-coupon.component';
+import { AddEditCouponComponent } from './components/add-edit-coupon/add-edit-coupon.component';
+import { ManageCouponsComponent } from './components/manage-coupons/manage-coupons.component';
+import { CreateAccountComponent } from './components/create-account/create-account.component';
+import { LoginComponent } from './components/login/login.component';
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyBMwN6ZS6UFOgkzKpmg_5B8D1scmrupRq0",
@@ -47,9 +49,10 @@ const firebaseConfig = {
     CouponComponent,
     SanitizePipe,
     LastCouponsComponent,
-    AddCouponComponent,
+    AddEditCouponComponent,
     LoginComponent,
-    CreateAccountComponent
+    CreateAccountComponent,
+    ManageCouponsComponent
   ],
   imports: [
     BrowserModule,

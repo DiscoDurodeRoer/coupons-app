@@ -10,7 +10,7 @@
 
   <div class="col-12">
 
-    <ddr-block-list *ngIf="loadCoupons"
+    <ddr-block-list
       [blockItems]="coupons"
       labelNoResults="No hay cupones que mostrar"
       previousLabel="Previo"
@@ -52,6 +52,11 @@
 
 
 </div>
+
+<div class="button-action" *ngIf="!auth.isAuthenticated()">
+  <button class="btn btn-primary" (click)="goToBack()">Login</button>
+</div>
+
 
 <ddr-spinner></ddr-spinner>
 
