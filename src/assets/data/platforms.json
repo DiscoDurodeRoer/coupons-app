@@ -1,0 +1,12 @@
+{
+    "platforms": 
+    [
+        {
+            "display": "Udemy",
+            "name": "udemy",
+            "icon": "img/icon-udemy.png",
+            "url": "https%3A%2F%2Fwww.udemy.com%2Fcourse%2F",
+            "paramCode": "couponCode"
+        }
+    ]
+}

@@ -1,3 +1,5 @@
+import { AuthService } from './../../services/auth.service';
+import { DdrConfigurationService } from 'ddr-configuration';
 import { Router } from '@angular/router';
 import { DdrToastService } from 'ddr-toast';
 import { CouponService } from '../../services/coupon.service';
@@ -20,11 +22,19 @@ export class AddEditCouponComponent implements OnInit {
   public MODE_EDIT = 1;
   public MODE_ADD = 2;
 
+  public platforms: any[];
+  public platformSelected: any;
+
   constructor(
     private couponService: CouponService,
     private toastService: DdrToastService,
-    private router: Router
+    private router: Router,
+    private config: DdrConfigurationService,
+    private auth: AuthService
   ) {
+
+    this.platforms = this.config.getData('platforms');
+    this.platformSelected = this.platforms[0];
 
     if (this.couponService.actualCoupon) {
       this.coupon = this.couponService.actualCoupon;
@@ -54,10 +64,20 @@ export class AddEditCouponComponent implements OnInit {
 
   addCoupon() {
 
+    this.coupon.platform = this.platformSelected.name;
+    this.coupon.urlComplete = this.platformSelected.url + this.coupon.urlCourse + "%2F?" + this.platformSelected.paramCode + "=" + this.coupon.code;
+
+    if (this.auth.currentUser() === 'administrador@discoduroderoer.es') {
+      this.coupon.urlComplete = this.coupon.urlComplete.replace(/%2F/g, '/').replace(/%3A/g, ':');
+    } else {
+      this.coupon.urlComplete = "https://click.linksynergy.com/link?id=5X/B5Fmfunc&offerid=507388&type=2&murl=" + this.coupon.urlComplete;
+    }
+    console.log(this.coupon.urlComplete);
+
     if (this.mode === this.MODE_ADD) {
       this.couponService.addCoupon(this.coupon).then(() => {
         this.toastService.addSuccessMessage('Éxito', '¡Has creado un cupón!');
-        this.router.navigate(['/manage-coupons']);
+        this.router.navigate(['/gestionar-coupones']);
       }).catch(error => {
         console.error(error);
       })
@@ -65,7 +85,7 @@ export class AddEditCouponComponent implements OnInit {
       this.couponService.editActualCoupon().then(() => {
         this.couponService.actualCoupon = null;
         this.toastService.addSuccessMessage('Éxito', '¡Has actualizado el cupón!');
-        this.router.navigate(['/manage-coupons']);
+        this.router.navigate(['/gestionar-coupones']);
       }).catch(error => {
         console.error(error);
       })

@@ -12,7 +12,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageCouponsComponent implements OnInit {
 
-  private coupons: DdrBlockItem[];
+  public coupons: DdrBlockItem[];
 
   private EDIT_COUPON = 'EDIT_COUPON'
   private COPY_COUPON = 'COPY_COUPON'

@@ -1,4 +1,3 @@
-
 // Angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -6,6 +5,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireModule } from '@angular/fire';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { APP_INITIALIZER } from '@angular/core';
 
 // Modules
 import { AppRoutingModule } from './app-routing.module';
@@ -16,6 +16,10 @@ import { FormsModule } from '@angular/forms';
 import { DdrBlockListModule } from 'ddr-block-list';
 import { DdrSpinnerModule } from 'ddr-spinner';
 import { DdrToastModule } from 'ddr-toast';
+
+// services
+import { DdrConfigurationModule, DdrConfigurationService } from 'ddr-configuration';
+
 
 // Pipe
 import { SanitizePipe } from './pipes/sanitize.pipe';
@@ -29,7 +33,11 @@ import { AddEditCouponComponent } from './components/add-edit-coupon/add-edit-co
 import { ManageCouponsComponent } from './components/manage-coupons/manage-coupons.component';
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { LoginComponent } from './components/login/login.component';
+import { HeaderComponent } from './components/header/header.component';
 
+export function configFactory(provider: DdrConfigurationService) {
+  return () => provider.getDataFromJSON('assets/data/platforms.json');
+}
 
 const firebaseConfig = {
   apiKey: "AIzaSyBMwN6ZS6UFOgkzKpmg_5B8D1scmrupRq0",
@@ -52,7 +60,8 @@ const firebaseConfig = {
     AddEditCouponComponent,
     LoginComponent,
     CreateAccountComponent,
-    ManageCouponsComponent
+    ManageCouponsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -68,9 +77,18 @@ const firebaseConfig = {
     FormsModule,
     DdrBlockListModule,
     DdrSpinnerModule,
-    DdrToastModule
+    DdrToastModule,
+    DdrConfigurationModule
   ],
-  providers: [],
+  providers: [
+    DdrConfigurationService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: configFactory,
+      deps: [DdrConfigurationService],
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

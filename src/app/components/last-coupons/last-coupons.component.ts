@@ -13,10 +13,10 @@ import { DdrSpinnerService } from 'ddr-spinner';
 })
 export class LastCouponsComponent implements OnInit {
 
-  private coupons: DdrBlockItem[];
+  public coupons: DdrBlockItem[];
 
   constructor(
-    private couponService: CouponService,
+    public couponService: CouponService,
     private ddrSpinner: DdrSpinnerService,
     public auth: AuthService,
     private router: Router
@@ -51,12 +51,9 @@ export class LastCouponsComponent implements OnInit {
   }
 
   selectItem($event) {
-    window.open($event.url, "_blank");
+    console.log($event.urlComplete);
+    window.open($event.urlComplete, "_blank");
     // window.location.href = $event.url;
-  }
-
-  goToBack() {
-    this.router.navigate(['/manage-coupons']);
   }
 
 }

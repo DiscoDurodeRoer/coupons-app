@@ -13,13 +13,13 @@ import { CouponComponent } from './components/coupon/coupon.component';
 const routes: Routes = [
   { path: 'coupons', component: CoursesComponent },
   { path: 'coupons/course/:id', component: CouponComponent },
-  { path: 'add-coupon', component: AddEditCouponComponent, canActivate: [LoginGuard] },
+  { path: 'aniadir-cupon', component: AddEditCouponComponent, canActivate: [LoginGuard] },
   { path: 'edit-coupon', component: AddEditCouponComponent, canActivate: [LoginGuard] },
-  { path: 'last-coupons', component: LastCouponsComponent },
+  { path: 'ultimos-cupones', component: LastCouponsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
-  { path: 'manage-coupons', component: ManageCouponsComponent, canActivate: [LoginGuard] },
-  { path: '**', pathMatch: 'full', redirectTo: 'last-coupons' }
+  { path: 'gestionar-cupones', component: ManageCouponsComponent, canActivate: [LoginGuard] },
+  { path: '**', pathMatch: 'full', redirectTo: 'ultimos-cupones' }
 ];
 
 @NgModule({

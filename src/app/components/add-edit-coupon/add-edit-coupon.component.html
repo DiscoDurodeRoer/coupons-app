@@ -55,9 +55,16 @@
 
           <div class="row form-group">
 
-            <div class="col-12">
+            <div class="col-md-4 col-12">
+              <label for="platform">Plataforma</label>
+              <select name="platform" class="form-control" id="platform">
+                <option [value]="p.url" *ngFor="let p of platforms" [(ngModel)]="platformSelected">{{p.display}}</option>
+              </select>
+            </div>            
+
+            <div class="col-md-8 col-12">
               <label for="url">URL *</label>
-              <input required name="url" class="form-control" id="url" [(ngModel)]="coupon.url" />
+              <input required name="url" class="form-control" id="url" [(ngModel)]="coupon.urlCourse" />
             </div>
 
           </div>
