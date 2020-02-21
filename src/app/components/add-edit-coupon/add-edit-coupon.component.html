@@ -57,8 +57,8 @@
 
             <div class="col-md-4 col-12">
               <label for="platform">Plataforma</label>
-              <select name="platform" class="form-control" id="platform">
-                <option [value]="p.url" *ngFor="let p of platforms" [(ngModel)]="platformSelected">{{p.display}}</option>
+              <select name="platform" class="form-control" id="platform" [(ngModel)]="platformSelected">
+                <option [value]="p.url" *ngFor="let p of platforms">{{p.display}}</option>
               </select>
             </div>            
 

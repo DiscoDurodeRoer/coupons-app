@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'aniadir-cupon', component: AddEditCouponComponent, canActivate: [LoginGuard] },
   { path: 'edit-coupon', component: AddEditCouponComponent, canActivate: [LoginGuard] },
   { path: 'ultimos-cupones', component: LastCouponsComponent },
+  { path: 'ultimos-cupones/:autor', component: LastCouponsComponent },
   { path: 'login', component: LoginComponent },
   { path: 'create-account', component: CreateAccountComponent },
   { path: 'gestionar-cupones', component: ManageCouponsComponent, canActivate: [LoginGuard] },

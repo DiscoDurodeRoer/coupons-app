@@ -104,7 +104,11 @@ export class CouponService {
     return this.afd.list<Coupon>('coupons').valueChanges();
   }
 
-  getLastCoupons(): Observable<Coupon[]> {
+  getLastCoupons(author: string): Observable<Coupon[]> {
+    if (author) {
+      return this.afd.list<Coupon>('coupons', ref => ref.orderByChild('author').equalTo(author.toLowerCase())).valueChanges();
+    }
+
     return this.afd.list<Coupon>('coupons').valueChanges();
   }
 

@@ -34,6 +34,7 @@ import { ManageCouponsComponent } from './components/manage-coupons/manage-coupo
 import { CreateAccountComponent } from './components/create-account/create-account.component';
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
+import { FilterCouponsComponent } from './components/filter-coupons/filter-coupons.component';
 
 export function configFactory(provider: DdrConfigurationService) {
   return () => provider.getDataFromJSON('assets/data/platforms.json');
@@ -61,7 +62,8 @@ const firebaseConfig = {
     LoginComponent,
     CreateAccountComponent,
     ManageCouponsComponent,
-    HeaderComponent
+    HeaderComponent,
+    FilterCouponsComponent
   ],
   imports: [
     BrowserModule,

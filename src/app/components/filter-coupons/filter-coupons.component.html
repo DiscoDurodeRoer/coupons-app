@@ -1,0 +1,67 @@
+<div class="row">
+  <div class="col-12">
+
+    <form class="p-2">
+
+      <div class="row form-group">
+        <div class="col-3">
+          <label for="precio">Inicio</label>
+          <p-calendar 
+            name="start" 
+            id="start" 
+            inputStyleClass="form-control" 
+            [(ngModel)]="filterProp.start"
+            [locale]="localeES"
+            (onSelect)="sendFilter()">
+          </p-calendar>
+
+        </div>
+        <div class="col-3">
+          <label for="precio">Fin</label>
+          <p-calendar 
+            name="end" 
+            id="end" 
+            inputStyleClass="form-control" 
+            [(ngModel)]="filterProp.end" 
+            [locale]="localeES"
+            (onSelect)="sendFilter()">
+          </p-calendar>
+
+        </div>
+
+        <div class="col-6">
+          <label for="name">Nombre</label>
+          <input type="text" 
+            class="form-control"
+            name="name" 
+            id="name"
+            #name
+            [(ngModel)]="filterProp.name"
+            (keyup)="sendFilter()">
+        </div>
+      </div>
+
+      <div class="row form-group">
+        <div class="col-6">
+          <label for="author">Autor</label>
+          <input type="text"
+            [readonly]="author"
+            class="form-control"
+            name="author" 
+            id="author"
+            #authorInput
+            [(ngModel)]="filterProp.author"
+            (keyup)="sendFilter()">
+        </div>
+        <div class="col-6">
+          <label for="platform">Plataforma</label>
+          <select name="platform" class="form-control" id="platform" [(ngModel)]="filterProp.platform">
+            <option [value]="p.display" *ngFor="let p of platforms" >{{p.display}}</option>
+          </select>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>

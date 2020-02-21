@@ -1,17 +1,20 @@
 <div class="row" id="last-coupons">
 
   <div class="col-12 text-center">
-    <h1>Últimos cupones</h1>
+    <h1>Últimos cupones {{author ? 'de ' + author : ''}}</h1>
   </div>
 
   <div class="col-12">
-    Futuro filtro
+    <ddr-filter-coupons
+      [author]="author"
+      (filter)="filterCoupons($event)">
+    </ddr-filter-coupons>
   </div>
 
   <div class="col-12">
 
     <ddr-block-list
-      [blockItems]="coupons"
+      [blockItems]="couponsFiltered"
       labelNoResults="No hay cupones que mostrar"
       previousLabel="Previo"
       nextLabel="Siguiente"
